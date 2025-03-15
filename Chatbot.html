@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prabhav's Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #2d0063;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .chat-container {
+            width: 400px;
+            margin: 50px auto;
+            background: #4b0082;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .chat-box {
+            height: 300px;
+            overflow-y: auto;
+            padding: 10px;
+            border-radius: 5px;
+            background: white;
+            color: black;
+        }
+        .input-box {
+            display: flex;
+            margin-top: 10px;
+        }
+        input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #ff0095;
+            color: white;
+            cursor: pointer;
+        }
+        .message {
+            margin: 5px;
+            padding: 8px;
+            border-radius: 5px;
+            max-width: 80%;
+        }
+        .user-message {
+            background: #007bff;
+            color: white;
+            align-self: flex-end;
+        }
+        .bot-message {
+            background: #f1f1f1;
+            color: black;
+            align-self: flex-start;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="chat-container">
+        <h2>Ask me anything about Prabhav!</h2>
+        <div class="chat-box" id="chatBox"></div>
+        <div class="input-box">
+            <input type="text" id="userInput" placeholder="Ask me anything..." />
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function botReply(userMessage) {
+            userMessage = userMessage.toLowerCase();
+        
+            // Name
+            if (userMessage.includes("who made you") || userMessage.includes("who created you") || userMessage.includes("your creator") || userMessage.includes("who is prabhav"))
+                return "My creator is Prabhav Sharma, a talented data scientist and web developer.";
+        
+            // Age
+            if (userMessage.includes("age") || userMessage.includes("how old") || userMessage.includes("birth year") || userMessage.includes("when was prabhav born"))
+                return "Prabhav is 20 years old.";
+        
+            // Skills
+            if (userMessage.includes("skills") || userMessage.includes("expertise") || userMessage.includes("what can prabhav do") ||userMessage.includes("about") || userMessage.includes("what is prabhav good at"))
+                return "Prabhav is skilled in Data Science, Machine Learning, Deep Learning, Neural Networks, NLP, and Web Development.";
+        
+            // Hobbies & Interests
+            if (userMessage.includes("hobbies") || userMessage.includes("likes to do") || userMessage.includes("what does prabhav enjoy") || userMessage.includes("passion"))
+                return "Prabhav enjoys meeting new people, learning about different cultures, exploring AI applications, and working on innovative projects.";
+        
+            // Projects
+            if (userMessage.includes("projects") || userMessage.includes("what has prabhav built") || userMessage.includes("past work") || userMessage.includes("what has prabhav worked on"))
+                return "Prabhav has worked on AI-powered educational platforms for the deaf, warehouse clustering models, image text extraction, and website development.";
+        
+            // Education
+            if (userMessage.includes("education") || userMessage.includes("college") || userMessage.includes("what is prabhav studying") || userMessage.includes("degree"))
+                return "Prabhav is a college student currently pursuing a career in Data Science.";
+        
+            // Internships & Work
+            if (userMessage.includes("internship") || userMessage.includes("is prabhav working") || userMessage.includes("work experience") || userMessage.includes("job"))
+                return "Prabhav is currently seeking a data science or data analytics internship in Noida or Delhi.";
+        
+            // Websites & Online Presence
+            if (userMessage.includes("website") || userMessage.includes("portfolio") || userMessage.includes("does prabhav have a website") || userMessage.includes("online projects"))
+                return "Prabhav is building multiple websites, including a portfolio and AI-powered learning platforms.";
+        
+            // Goals & Future Plans
+            if (userMessage.includes("goal") || userMessage.includes("future plans") || userMessage.includes("career path") || userMessage.includes("what does prabhav want to do"))
+                return "Prabhav aims to become a leading data scientist and AI developer, working on impactful projects that benefit society.";
+        
+            // Personal Life
+            if (userMessage.includes("where does prabhav live") || userMessage.includes("hometown") || userMessage.includes("prabhav's location"))
+                return "Prabhav is from Rajasthan, India.";
+        
+            // Favorite Technologies
+            if (userMessage.includes("favorite tech") || userMessage.includes("which tools does prabhav use") || userMessage.includes("tech stack"))
+                return "Prabhav loves working with Python, TensorFlow, OpenCV, Pandas, and React.js.";
+        
+            // Favorite Food
+            if (userMessage.includes("favorite food") || userMessage.includes("does prabhav like food") || userMessage.includes("what does prabhav eat"))
+                return "Prabhav enjoys Indian cuisine, especially Rajma Chawal and Paneer Butter Masala.";
+        
+            // Fun Facts
+            if (userMessage.includes("fun fact") || userMessage.includes("tell me something cool") || userMessage.includes("interesting about prabhav"))
+                return "Fun fact: Prabhav has built a 3D animated character to translate subtitles into hand signs using AI! 🚀";
+        
+            // Casual Conversation
+            if (userMessage.includes("hi") || userMessage.includes("hello") || userMessage.includes("hey"))
+                return "Hey there! How can I help you today? 😊";
+        
+            if (userMessage.includes("how are you") || userMessage.includes("how’s it going"))
+                return "I'm just a chatbot, but thanks for asking! I'm always here to help. How about you?";
+        
+            if (userMessage.includes("what’s up") || userMessage.includes("sup"))
+                return "Not much! Just chilling here, ready to chat. What about you?";
+        
+            if (userMessage.includes("tell me a joke") || userMessage.includes("make me laugh"))
+                return "Sure! Why did the programmer go broke? Because he used up all his cache! 😂";
+        
+            if (userMessage.includes("thank you") || userMessage.includes("thanks"))
+                return "You're welcome! I'm always here to help. 😊";
+        
+            if (userMessage.includes("goodbye") || userMessage.includes("bye"))
+                return "Goodbye! Have a great day ahead. 😊";
+        
+            return "I'm not sure about that, but you can ask me anything else about Prabhav!";
+        }
+        
+
+        function sendMessage() {
+            let userInput = document.getElementById("userInput").value;
+            if (!userInput) return;
+
+            let chatBox = document.getElementById("chatBox");
+
+            let userMessage = `<div class="message user-message">${userInput}</div>`;
+            chatBox.innerHTML += userMessage;
+
+            let botResponse = botReply(userInput);
+            setTimeout(() => {
+                let botMessage = `<div class="message bot-message">${botResponse}</div>`;
+                chatBox.innerHTML += botMessage;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 500);
+
+            document.getElementById("userInput").value = "";
+        }
+    </script>
+
+</body>
+</html>

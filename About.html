@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgb(2, 5, 46);
+            color: aliceblue;
+            font-family: Arial, sans-serif;
+            position: relative; /* Ensure relative positioning for absolute elements */
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: rgb(40, 4, 75);
+        }
+
+        nav ul {
+            display: flex;
+        }
+
+        nav ul li {
+            list-style: none;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: aliceblue;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+            color: rgb(241, 16, 223);
+        }
+
+        .left {
+            font-size: 1.5rem;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin: 20px 0;
+            color: rgb(218, 18, 218);
+            text-shadow: 2px 2px 20px;
+        }
+
+        .section-content {
+            width: 100%;
+            font-size: 1.2rem;
+            text-align: center;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            transition: font-size 0.3s ease;
+        }
+
+        .section-content:hover {
+            background-color: rgba(158, 43, 152, 0.3);
+            border-radius: 30px;
+        }
+
+        .highlight {
+            color: rgb(241, 16, 223);
+            font-weight: bold;
+        }
+
+        .education,
+        .skills {
+            width: 80%;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .education ul,
+        .skills ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .education li,
+        .skills li {
+            margin: 10px 0;
+            font-size: 1.2rem;
+        }
+
+        .year {
+            color: rgb(28, 139, 158);
+        }
+
+        .circle {
+            position: absolute;
+            background-color: rgb(110, 29, 100);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            box-shadow: 10px 10px 30px rgba(194, 174, 194, 0.5);
+            animation: float 3s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        .circle:nth-child(1) {
+            left: 10%;
+            top: 20%;
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            left: 50%;
+            top: 60%;
+            animation-delay: 1s;
+        }
+
+        .circle:nth-child(3) {
+            left: 80%;
+            top: 40%;
+            animation-delay: 2s;
+        }
+
+        .circle:nth-child(4) {
+            left: 30%;
+            top: 30%;
+            animation-delay: 0.5s;
+        }
+
+        .circle:nth-child(5) {
+            left: 70%;
+            top: 30%;
+            animation-delay: 1.5s;
+        }
+
+        /* Spread circles all over the screen */
+        .circle:nth-child(6) {
+            left: 20%;
+            top: 10%;
+        }
+
+        .circle:nth-child(7) {
+            left: 60%;
+            top: 70%;
+        }
+
+        .circle:nth-child(8) {
+            left: 90%;
+            top: 20%;
+        }
+
+        .circle:nth-child(9) {
+            left: 40%;
+            top: 50%;
+        }
+
+        .circle:nth-child(10) {
+            left: 80%;
+            top: 70%;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        #myButton {
+            width: 100px;
+            height: 50px;
+            background-color: purple;
+            border: none;
+            box-shadow: 0 0 10px white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            text-align: center;
+            border-radius: 15px;
+            transition: transform 0.3s, background-color 0.3s;
+            cursor: pointer;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #myButton:hover {
+            transform: scale(1.1);
+            background-color: rgb(128, 0, 128);
+        }
+
+        #myFrame {
+            display: none;
+            width: 500px;
+            height: 430px;
+            margin: 20px auto;
+            border: 2px solid purple;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline {
+            width: 80%;
+            margin: 40px auto;
+            padding: 20px;
+            position: relative;
+            color: aliceblue;
+        }
+
+        .timeline-container {
+            position: relative;
+            padding: 10px 0;
+            list-style: none;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 20px 0;
+            padding-left: 30px;
+            border-left: 2px solid rgb(218, 18, 218);
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .timeline-item.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -8px;
+            width: 16px;
+            height: 16px;
+            background-color: rgb(218, 18, 218);
+            border-radius: 50%;
+            top: 0;
+        }
+
+        .timeline-date {
+            font-size: 1.1rem;
+            color: rgb(28, 139, 158);
+            font-weight: bold;
+        }
+
+        .timeline-content {
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .timeline-content h3 {
+            margin-top: 0;
+            color: rgb(241, 16, 223);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="left">Prabhav's Portfolio</div>
+            <div class="right">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="About.html">About & Skills</a></li>
+                    <li><a href="Highlights.html">Personal Projects</a></li>
+                    <li><a href="Contact1.html">Contact Me</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="section-title">About Me</div>
+        <div class="section-content">
+            Hi, I'm <span class="highlight">Prabhav</span>, a passionate and dedicated <span class="highlight">Data
+                Science</span> student. My journey in data science involves uncovering insights from data and applying
+            <span class="highlight">machine learning techniques</span> to solve real-world problems. With a strong
+            foundation in various data science tools and technologies, I've successfully worked on numerous projects
+            that showcase my <span class="highlight">analytical skills</span> and technical expertise.
+        </div>
+        <div class="section-title">My Journey</div>
+        <div class="section-content">
+            My data science journey began with a deep curiosity about how data can be used to make informed decisions
+            and drive innovation. I started by teaching myself the basics of <span class="highlight">Python</span> and
+            gradually delved into more complex topics like <span class="highlight">machine learning</span> and <span
+                class="highlight">data visualization</span>. Through self-study and hands-on projects, I gained
+            proficiency in essential tools and libraries such as <span class="highlight">NumPy, Matplotlib, and
+                scikit-learn</span>. <br><br> Along the way, I discovered the power of <span class="highlight">advanced
+                Excel</span> and <span class="highlight">Power BI</span> for data analysis and visualization, enhancing
+            my ability to present data in meaningful ways. My experience with <span class="highlight">Google Colab</span>
+            has enabled me to collaborate seamlessly on projects, share my work with peers, and continuously learn from
+            the data science community. <br><br> This journey has been incredibly rewarding, and I am excited to
+            continue exploring the vast possibilities within the field of data science.
+        </div>
+<!-- Timeline Section -->
+<div class="timeline">
+    <h2 class="section-title">Timeline</h2>
+    <ul class="timeline-container">
+        <li class="timeline-item">
+            <div class="timeline-date">2024</div>
+            <div class="timeline-content">
+                <h3>Started New Data Science Project</h3>
+                <p>Initiated a project to analyze customer reviews using NLP techniques.</p>
+            </div>
+        </li>
+        <li class="timeline-item">
+            <div class="timeline-date">2023</div>
+            <div class="timeline-content">
+                <h3>Completed Advanced Machine Learning Course</h3>
+                <p>Completed a course on advanced machine learning algorithms and their applications.</p>
+            </div>
+        </li>
+        <li class="timeline-item">
+            <div class="timeline-date">2022</div>
+            <div class="timeline-content">
+                <h3>Graduated from Gyan Mandir Public School</h3>
+                <p>Graduated from high school with a focus on science and technology subjects.</p>
+            </div>
+        </li>
+        <li class="timeline-item">
+            <div class="timeline-date">2021</div>
+            <div class="timeline-content">
+                <h3>Started Learning Python</h3>
+                <p>Embarked on a journey to learn Python programming and its applications in data science.</p>
+            </div>
+        </li>
+    </ul>
+</div>
+        <div class="education">
+            <h2 class="section-title">Education</h2>
+            <ul>
+                <li>Tagore Public School (10th) <span class="year">@2020</span></li>
+                <li>Gyan Mandir Public School (12th) <span class="year">@2022</span></li>
+                <li>Bachelor of Technology in Computer Science and Engineering <span class="year">@2026</span></li>
+            </ul>
+        </div>
+        <div class="skills">
+            <h2 class="section-title">Skills</h2>
+            <ul>
+                <li>Python Programming Language</li>
+                <li>Power BI for visualization</li>
+                <li>Advanced Excel for data cleaning</li>
+                <li>Machine Learning - Model Building and Deployment</li>
+                <li>Python Libraries: NumPy, Pandas, Matplotlib, Seaborn, Streamlit, scikit-learn, OpenCV, Beautiful
+                    Soup</li>
+                <li>Web Scraping</li>
+                <li>Data Preprocessing & Cleaning using Python</li>
+            </ul>
+        </div>
+
+        
+
+        <div id="element-skill"></div>
+    </main>
+    <!-- Circles placed all over the screen -->
+    <div class="circle">
+        <img src="icons8-bar-chart-50.png" alt="">
+    </div>
+    <div class="circle">
+        <img src="icons8-excel-64.png" alt="">
+    </div>
+    <div class="circle">
+        <img src="icons8-investment-portfolio-94.png" alt="">
+    </div>
+    <div class="circle">
+        <img src="icons8-pycharm-100 copy.png" alt="">
+    </div>
+    <div class="circle">
+        <img src="icons8-skills-50 (1).png" alt="">
+    </div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+
+    <button id="myButton">ChattyBot</button>
+    <iframe id="myFrame" allow="microphone;"
+        src="https://console.dialogflow.com/api-client/demo/embedded/3bb031ec-d025-4f5d-845e-4360dcba888f"></iframe>
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed('#element-skill', {
+            strings: ['Now after looking at my skills and education, it\'s time to move ahead to some of my personal projects!'],
+            typeSpeed: 60,
+        });
+
+        document.getElementById("myButton").onclick = function () {
+            var frame = document.getElementById("myFrame");
+            if (frame.style.display === "none") {
+                frame.style.display = "block";
+                window.scrollBy(0, 100);
+            } else {
+                frame.style.display = "none";
+            }
+        }
+
+        // Add animation to timeline items
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        const timelineOptions = {
+            threshold: 0.1
+        };
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, timelineOptions);
+
+        timelineItems.forEach(item => observer.observe(item));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* General Styles */
+/* General Styles */
+.projects {
+    text-align: center;
+    padding: 50px 10px;
+    background: transparent;
+    color: white;
+  }
+  
+  /* Heading */
+  h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  /* Filter Buttons */
+  .filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .filter-btn {
+    background: #1e1e1e;
+    color: white;
+    padding: 10px 20px;
+    border: 2px solid #ffcc00;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .filter-btn:hover, .filter-btn.active {
+    background: #ffcc00;
+    color: black;
+  }
+  
+  /* Project Container */
+  .projects-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  /* Card Styling */
+  .card {
+    position: relative;
+    width: 320px;
+    height: 220px;
+    background: rgba(30, 30, 30, 0.6); /* Transparent background */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 0 15px #ffcc00; /* Neon Glow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #ffcc00;
+  }
+  
+  /* Card Content */
+  .card__content {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .card__title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffcc00;
+  }
+  
+  .card__description {
+    font-size: 14px;
+    margin: 10px 0;
+    color: #ccc;
+  }
+  
+  /* Toggle Button */
+  .button-toggle {
+    margin-top: 10px;
+  }
+  
+  .toggle-btn {
+    background: #444;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    transition: background 0.3s;
+  }
+  
+  .toggle-btn:hover {
+    background: #666;
+  }
+  
+  /* Buttons */
+  .buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .card__button {
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: none;
+  }
+  
+  .github {
+    background: #ffcc00;
+    color: black;
+  }
+  
+  .github:hover {
+    background: #e6b800;
+  }
+  
+  .docs {
+    background: #008CBA;
+    color: white;
+  }
+  
+  .docs:hover {
+    background: #0073a8;
+  }
+  
+  /* Hide Docs Button Initially */
+  .hidden {
+    display: none;
+  }
+  
+  /* Hide Sections Initially */
+  .project-category {
+    display: none;
+  }
+  
+  .project-category.show {
+    display: block;
+  }
+  
+    </style>
+</head>
+<body>
+<!-- Projects Section -->
+<section class="projects">
+    <h2>My Python Projects</h2>
+  
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+      <button class="filter-btn active" onclick="filterProjects('all')">All</button>
+      <button class="filter-btn" onclick="filterProjects('basic')">Basic</button>
+      <button class="filter-btn" onclick="filterProjects('intermediate')">Intermediate</button>
+      <button class="filter-btn" onclick="filterProjects('advanced')">Advanced</button>
+    </div>
+  
+    <!-- Project Categories -->
+    <div class="projects-container">
+      <!-- Basic Projects -->
+      <div class="project-category basic">
+        <div class="card">
+          <div class="card__content">
+            <p class="card__title">Calculator</p>
+            <p class="card__description">A simple Python calculator using Tkinter for GUI.</p>
+            <div class="button-toggle">
+              <button class="toggle-btn" onclick="toggleButtons(this)">Show Docs</button>
+              <div class="buttons">
+                <button class="card__button github" onclick="window.open('https://github.com/your-calculator-link', '_blank')">GitHub</button>
+                <button class="card__button docs hidden" onclick="window.open('https://your-documentation-link', '_blank')">Documentation</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Intermediate Projects -->
+      <div class="project-category intermediate">
+        <div class="card">
+          <div class="card__content">
+            <p class="card__title">Web Scraper</p>
+            <p class="card__description">A Python script that scrapes data from websites using BeautifulSoup.</p>
+            <div class="button-toggle">
+              <button class="toggle-btn" onclick="toggleButtons(this)">Show Docs</button>
+              <div class="buttons">
+                <button class="card__button github" onclick="window.open('https://github.com/your-webscraper-link', '_blank')">GitHub</button>
+                <button class="card__button docs hidden" onclick="window.open('https://your-documentation-link', '_blank')">Documentation</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Advanced Projects -->
+      <div class="project-category advanced">
+        <div class="card">
+          <div class="card__content">
+            <p class="card__title">Recommendation System</p>
+            <p class="card__description">An AI-powered recommendation system using collaborative filtering.</p>
+            <div class="button-toggle">
+              <button class="toggle-btn" onclick="toggleButtons(this)">Show Docs</button>
+              <div class="buttons">
+                <button class="card__button github" onclick="window.open('https://github.com/your-recommendation-link', '_blank')">GitHub</button>
+                <button class="card__button docs hidden" onclick="window.open('https://your-documentation-link', '_blank')">Documentation</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script>// Toggle between GitHub & Documentation Buttons
+    function toggleButtons(button) {
+      const buttonsDiv = button.nextElementSibling;
+      const githubButton = buttonsDiv.querySelector('.github');
+      const docsButton = buttonsDiv.querySelector('.docs');
+    
+      // Toggle visibility
+      githubButton.classList.toggle('hidden');
+      docsButton.classList.toggle('hidden');
+    
+      // Change button text
+      if (githubButton.classList.contains('hidden')) {
+        button.innerText = "Show GitHub";
+      } else {
+        button.innerText = "Show Docs";
+      }
+    }
+    
+    // Filter Projects Based on Selection
+    function filterProjects(category) {
+      const categories = document.querySelectorAll('.project-category');
+      const buttons = document.querySelectorAll('.filter-btn');
+    
+      buttons.forEach(btn => btn.classList.remove('active'));
+    
+      // Show only the selected category
+      categories.forEach(cat => {
+        if (category === 'all' || cat.classList.contains(category)) {
+          cat.classList.add('show');
+        } else {
+          cat.classList.remove('show');
+        }
+      });
+    
+      document.querySelector(`.filter-btn[onclick="filterProjects('${category}')"]`).classList.add('active');
+    }
+    
+    // Show all projects by default
+    document.addEventListener("DOMContentLoaded", () => {
+      filterProjects('all');
+    });
+    
+  </script>
+</body>
+</html>
